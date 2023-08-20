@@ -1,4 +1,4 @@
-import { FaHome, FaRegListAlt, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaRegListAlt, FaUserCircle, FaLock } from "react-icons/fa";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -33,6 +33,7 @@ const NavButton = styled.button`
 
 const BottomNavBar = () => {
   const navigate = useNavigate();
+  const nonMembers = sessionStorage.getItem("nonMembers"); //"true"
   // const [isLogin, _setIsLogin] = useState(false);
 
   return (
@@ -46,17 +47,17 @@ const BottomNavBar = () => {
           <FaHome />
           <p>Home</p>
         </NavButton>
-        {/* {isLogin ? ( */}
-        <NavButton onClick={() => navigate("/mypage")}>
-          <FaUserCircle />
-          <p>MyPage</p>
-        </NavButton>
-        {/* ) : (
+        {nonMembers === "true" ? (
           <NavButton onClick={() => navigate("/login")}>
             <FaLock />
             <p>Login</p>
           </NavButton>
-        )} */}
+        ) : (
+          <NavButton onClick={() => navigate("/mypage")}>
+            <FaUserCircle />
+            <p>MyPage</p>
+          </NavButton>
+        )}
       </NavBarContainer>
     </Container>
   );

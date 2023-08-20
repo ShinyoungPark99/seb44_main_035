@@ -45,15 +45,21 @@ const EditPage = () => {
       console.error("Error fetching recipe data:", error);
     }
   };
-
+  //이미지 URL에 해당하는 이미지 데이터를 요청
   const getRecipeImageData = async (imageUrl: string) => {
-    const response = await axios.get(imageUrl, { responseType: "blob" });
+    // 헤더 수정
+
+    const response = await axios.get(imageUrl, {
+      responseType: "blob",
+    });
     return new File([response.data], "update.jpg", { type: "image/jpeg" });
   };
 
   const getListRecipeImageData = async (imageUrls: string[]) => {
     const imageRequests = imageUrls.map((imageUrl) =>
-      axios.get(imageUrl, { responseType: "blob" })
+      axios.get(imageUrl, {
+        responseType: "blob",
+      })
     );
     const responses = await Promise.all(imageRequests);
     return responses.map(
