@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import AddModal from "../components/MyPage/AddModal";
 import axios from "axios";
 import BottomNavBar from "../components/bottom/BottomNavBar";
 
 const MyPage = () => {
-  const [memberId, setMemberId] = useState("");
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [_memberId, _setMemberId] = useState("");
+  const [name, _setName] = useState("");
+  const [image, _setImage] = useState("");
   const navigate = useNavigate();
   const loginInfo = JSON.parse(sessionStorage.getItem("token") || "null") as {
     memberid: number;
@@ -17,10 +16,9 @@ const MyPage = () => {
     // nickname: string;
     // email: string;
   };
-  // const navigate = useNavigate();
-  // const handleRecipesClick = () => {
-  //   navigate("/my-recipes");
-  // };
+  const handleRecipesClick = () => {
+    navigate("/my-recipes");
+  };
   const [isOpenAddIngredientModal, setIsOpenAddIngredientModal] =
     useState(false);
   const handleAddClick = () => {
@@ -35,7 +33,7 @@ const MyPage = () => {
     localStorage.clear();
     navigate("/login");
   };
-  const handleLoginDelete = (e) => {
+  const handleLoginDelete = (e: any) => {
     const memberId = sessionStorage.getItem("memberId");
     e.preventDefault();
     if (window.confirm("확인을 누르면 회원 정보가 삭제됩니다.")) {
