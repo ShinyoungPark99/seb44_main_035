@@ -40,7 +40,7 @@ export default function MyPostPage() {
             <span className="title">내가 작성한 레시피 📝</span>
           </Header>
           <ContentWrapper>
-            {data.map((post: any, index: any) => (
+            {data.map((post: any) => (
               <>
                 <Contents>
                   <Content>
@@ -92,7 +92,7 @@ export default function MyPostPage() {
                               ) {
                                 axios.delete(url, { headers }).then((_res) => {
                                   alert("삭제되었습니다.");
-                                  redirect("/my-recipes");
+                                  window.location.href = `/my-recipes`;
                                 });
                               }
                             } catch (error) {
@@ -131,8 +131,8 @@ const Container = styled.main`
 const AppBox = styled.div`
   background-color: white;
   max-width: 420px;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   overflow-y: auto;
   padding-bottom: 60px;

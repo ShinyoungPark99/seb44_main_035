@@ -13,6 +13,16 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import MyPostPage from "./pages/MyPostPage";
 
+export interface RecipeList {
+  Recipes: {
+    recipe_id: number;
+    name: string;
+    view: number;
+    likes: number;
+    img: string;
+  };
+}
+
 function App() {
   function isLoggedIn() {
     const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
