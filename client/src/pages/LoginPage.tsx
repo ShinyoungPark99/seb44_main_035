@@ -48,6 +48,7 @@ const LoginPage = () => {
       sessionStorage.setItem("isLoggedIn", "true");
       sessionStorage.setItem("nonMembers", "true");
       window.location.href = "/";
+      navigate("/");
     } catch (error) {
       console.log("에러입니다", error);
     }
@@ -73,6 +74,7 @@ const LoginPage = () => {
       sessionStorage.setItem("nonMembers", "false");
 
       window.location.href = "/";
+      navigate("/");
     } catch (error) {
       alert("가입되지 않은 유저입니다.");
     }
